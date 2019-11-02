@@ -1,0 +1,30 @@
+.alert-error {
+  color: red;
+}
+
+img {
+  width: 10%;
+}
+
+.HYFheader {
+  text-align: center;
+  background: darkblue;
+  color: #fff;
+  font-size: 2rem;
+  padding: 2%;
+}
+
+.title {
+  font-weight: bold;
+}
+
+li {
+  list-style-type: none;
+  font-size: 2rem;
+  padding: 1%;
+}
+
+ul {
+  margin: 3%;
+  border: 3px solid gray;
+}
