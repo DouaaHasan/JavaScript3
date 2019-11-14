@@ -29,14 +29,14 @@ li {
 
 .bodyContainer {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
   padding: 1%;
+  border: 2px solid black;
 }
 
 .contributorsContainer {
   background: #eee;
   box-shadow: 0 0 5px 1px;
-  width: 48%;
 }
 
 .contributorsContainer h3 {
@@ -45,14 +45,14 @@ li {
 
 .repoContainer {
   background: #eee;
-  box-shadow: 0 0 3px 3px;
-  width: 48%;
   box-shadow: 0 0 5px 1px;
+  margin: 0 2% 2% 0;
 }
 
 select {
   height: 3rem;
   font-size: 1.5rem;
+  width: 100%;
 }
 
 option {
@@ -78,4 +78,10 @@ option {
   border-radius: 20%;
   padding: 1%;
   color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  select {
+    font-size: 1rem;
+  }
 }

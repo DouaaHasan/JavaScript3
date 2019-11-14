@@ -119,9 +119,7 @@
     const ulContributor = createAndAppend('ul', contributorsContainer);
 
     // contributors_url
-    fetch(selectedRepo.contributors_url)
-      // convert to json
-      .then(res => res.json())
+    fetchJSON(selectedRepo.contributors_url)
       .then(contributors => {
         contributors.forEach(contributor => {
           const li = createAndAppend('li', ulContributor, {
