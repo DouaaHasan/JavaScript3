@@ -20,9 +20,37 @@
      */
     render(contributors) {
       // TODO: replace this comment and the console.log with your own code
-      console.log('ContributorsView', contributors);
+      try {
+        // clear container
+        this.container.innerHTML = '';
+        createAndAppend('h3', this.container, { text: 'Contributions' });
+        const ulContributors = createAndAppend('ul', this.container, {
+          class: 'contributors-list',
+        });
+        contributors.forEach(contributor => {
+          const liContributor = createAndAppend('li', ulContributors, {
+            class: 'contributor',
+          });
+
+          createAndAppend('img', liContributor, {
+            src: contributor.avatar_url,
+            class: 'contributorImg',
+          });
+
+          createAndAppend('a', liContributor, {
+            text: contributor.login,
+            href: contributor.html_url,
+          });
+
+          createAndAppend('p', liContributor, {
+            text: contributor.contributions,
+            class: 'right',
+          });
+        });
+      } catch (error) {
+        return new Error(error.message);
+      }
     }
   }
-
   window.ContributorsView = ContributorsView;
 }

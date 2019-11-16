@@ -4,6 +4,7 @@
   class Observable {
     constructor() {
       this.observers = new Set();
+      // console.log(this.observers);
     }
 
     subscribe(observer = {}) {

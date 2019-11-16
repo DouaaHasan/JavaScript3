@@ -3,12 +3,12 @@
 {
   const { Observable } = window;
 
-  const makeUrl = ({ name, type }) =>
-    `https://api.github.com/${type}s/${name}/repos?per_page=100`;
+  const makeUrl = ({ name, type }) => `https://api.github.com/${type}s/${name}/repos?per_page=100`;
 
   class Model extends Observable {
     constructor(account) {
-      super();
+      // {name: "HackYourFuture", type: "org"}
+      super(); // used to access and call functions on an object's parent.
       this.account = account;
       this.state = {
         repos: [],
@@ -23,16 +23,15 @@
       this.state.error = null;
       try {
         if (this.state.repos.length === 0) {
-          const repos = await Model.fetchJSON(makeUrl(this.account));
+          const repos = await Model.fetchJSON(makeUrl(this.account)); // add the name as a second parameter
           this.state.repos = repos.sort((a, b) => a.name.localeCompare(b.name));
         }
-        const index = id
-          ? this.state.repos.findIndex(repo => repo.id === repoId)
-          : 0;
+
+        const index = id ? this.state.repos.findIndex(repo => repo.id === repoId) : 0;
         this.state.selectedRepo = this.state.repos[index];
-        this.state.contributors = await Model.fetchJSON(
-          this.state.selectedRepo.contributors_url,
-        );
+
+        // fetching contributors
+        this.state.contributors = await Model.fetchJSON(this.state.selectedRepo.contributors_url);
       } catch (err) {
         this.state.error = err;
       }

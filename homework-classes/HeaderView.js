@@ -23,22 +23,24 @@
      * @param {Object[]} repos An array of repository objects.
      */
     render(repos) {
-      createAndAppend('div', this.header, { text: this.account.name });
-      this.select = createAndAppend('select', this.header, {
-        class: 'repo-select',
-        autofocus: 'autofocus',
-      });
+      try {
+        createAndAppend('section', this.header, { text: this.account.name });
+        this.select = createAndAppend('select', this.header, {
+          class: 'repo-select',
+          autofocus: 'autofocus',
+        });
 
-      repos.forEach(repo =>
-        createAndAppend('option', this.select, {
-          text: repo.name,
-          value: repo.id,
-        }),
-      );
+        repos.forEach(repo =>
+          createAndAppend('option', this.select, {
+            text: repo.name,
+            value: repo.id,
+          }),
+        );
 
-      this.select.addEventListener('change', () =>
-        this.fetchData(this.select.value),
-      );
+        this.select.addEventListener('change', () => this.fetchData(this.select.value));
+      } catch (error) {
+        return new Error(error.message);
+      }
     }
   }
 

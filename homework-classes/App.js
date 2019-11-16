@@ -37,15 +37,15 @@
     static renderContainers() {
       const root = document.getElementById('root');
       const header = createAndAppend('header', root, { class: 'header' });
-      const error = createAndAppend('div', root);
+      const error = createAndAppend('section', root);
       const main = createAndAppend('main', root, {
         class: 'main-container',
       });
       const repo = createAndAppend('section', main, {
-        class: 'repo-container whiteframe',
+        class: 'repo-container',
       });
       const contributors = createAndAppend('section', main, {
-        class: 'contributors-container whiteframe',
+        class: 'contributors-container',
       });
       return { header, error, main, repo, contributors };
     }
